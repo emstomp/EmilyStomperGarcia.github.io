@@ -1,0 +1,132 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(245, 239, 220);
+    font-family: Georgia, Arial;
+    color: rgb(56, 56, 56);
+}
+
+a {
+    text-decoration: none;
+    color: rgb(56, 56, 56);
+    font-weight: bold;
+}
+
+a:hover {
+    color: darkblue;
+    text-decoration: underline;
+}
+
+#top-banner {
+    display: flex;
+    justify-content: space-between;
+    padding: 3% 20%;
+    align-items: center;
+}
+
+#nav-links li {
+    display: inline-block;
+    padding: 0px 10px;
+}
+
+#image-background {
+    display: grid;
+    background-color: blue;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: 1fr 4fr 1fr;
+    height: 600px;
+    background-image: url('img/RPICampus.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+#about-me {
+    grid-column: 2;
+    grid-row: 2;
+    background-color: rgb(245, 239, 220);;
+    border-radius: 25px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr;
+    padding: 5%;
+    gap: 10px;
+    align-items: center;
+}
+
+#img-me {
+    width: 200%;
+    border-radius: 25px;
+}
+
+
+#about-me div {
+    grid-column: 3;
+    grid-row: 1;
+}
+
+#about-me h2 {
+    padding-bottom: 10px;
+}
+
+/* Projects page */
+#projects-body h2 {
+    justify-self: center;
+    padding-bottom: 30px;
+}
+
+#projects {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.project {
+    flex: 1 1 300px;
+    height: 200px;
+    max-width: 500px;
+    /* background-color: red; */
+}
+
+.project-img {
+    width: 100%;
+}
+
+.project-title {
+    padding-left: 10px;
+    padding-top: 15px;
+    font-size: larger;
+}
+
+.project-desc {
+    padding: 10px;
+    line-height: 150%;
+}
+
+/* contact page */
+#contact-body {
+    display: grid;
+    justify-content: center;
+    grid-template-rows: 50px, 100px;
+    gap: 20px;
+}
+
+#contact-body h2 {
+    justify-self: center;
+ }
+
+#contact-body p {
+    line-height: 150%;
+    grid-column: 1;
+    grid-row: 2;
+    font-size: large;
+}
+
+#contact-body a {
+    text-decoration: underline;
+}

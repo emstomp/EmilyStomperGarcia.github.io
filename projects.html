@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Emily Stomper Garcia | Projects</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+
+    <div id="top-banner" class="max-width">
+      <div class="left-items">
+        <h2>Emily Stomper Garcia</h2>
+      </div>
+      <nav id="nav-bar" class="right-items">
+        <ul id="nav-links">
+          <li>
+            <a href="home.html">Home</a>
+          </li>
+          <li>
+            <a href="projects.html">Projects</a>
+          </li>
+          <li>
+            <a href="contact.html">Contact</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    <div id="projects-body">
+      <h2>Projects</h2>
+      <div id="projects">
+
+        <div class="project">
+          <img src="img/traintracker_img0.jpg" class="project-img">
+          <h3 class="project-title">
+            Chicago Blue Line Train Tracker
+          </h3>
+          <p class="project-desc">
+            An LED display of Chicago's Blue Line that indicates 
+            which stations a train is currently at. I used an ESP32-WROVER 
+            dev board to send a request every few seconds to CTA's API for 
+            each train's current position. The microcontroller then parses 
+            that information and sends the appropriate bits to the pixels.
+            Each pair of pixels is a station on the Blue Line. The innermost
+            line of pixels are for the trains heading South, and the outermost 
+            are for the trains heading North.
+            </br>
+            </br>
+            <a>Learn more</a>
+          </p>
+        </div>
+
+        <div class="project">
+          <img src="img/keyboard_img0.jpg" class="project-img">
+          <h3 class="project-title">
+            Handwired Mechanical Keyboard
+          </h3>
+          <p class="project-desc">
+            After taking an interest in mechanical keyboards I wondered if 
+            I could wire and program my own. I took red Kailh box switches,  
+            sodered them into a matrix, and connected them to a Rasberry Pi 
+            Pico. The Pico scans the matrix and reads any keystrokes.
+            </br>
+            </br>
+            <a href="">Learn more</a>
+          </p>
+        </div>
+        
+        <div class="project">
+          <img src="img/trashcollector_img0.JPG" class="project-img">
+          <h3 class="project-title">
+            Automatic Trash Collector
+          </h3>
+          <p class="project-desc">
+            This was a project for my Intro to Engineering Design class that I 
+            worked on with 6 other students. It is an automatic trash 
+            collecting robot that uses the Ultralytics YOLOv8 object 
+            detection model to detect trash. When it detects trash, it calculates 
+            how far it is, moves to it, and uses its grabber to pick it up 
+            and dump it in the bin.
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+  </body>
+</html>
