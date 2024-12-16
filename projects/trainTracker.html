@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Emily Stomper Garcia | Train Tracker</title>
+    <link rel="stylesheet" href="../style.css">
+  </head>
+  <body>
+    
+    <div id="top-banner" class="max-width">
+      <div class="left-items">
+        <h2>Emily Stomper Garcia</h2>
+      </div>
+      <nav id="nav-bar" class="right-items">
+        <ul id="nav-links">
+          <li>
+            <a href="home">Home</a>
+          </li>
+          <li>
+            <a href="projects">Projects</a>
+          </li>
+          <li>
+            <a href="contact">Contact</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="project-page-body">
+        <h1 class="project-page-title">Train Tracker</h1>
+        <img src="../img/traintracker_img0.jpg">
+        <p>
+            This is a live led map that displays where each train 
+            is on one of Chicago's train routes. I was 
+            inspired by <a href="https://www.traintrackr.io/">traintrackr</a> 
+            maps and wanted to build my own on a smaller scale. 
+        </p>
+
+        <h2>Supplies</h2>
+        <ul>
+          <li><a href="https://www.amazon.com/gp/product/B01DC0J3UM/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8&psc=1">WS2812B addressable RGB pixels (x66)</a></li>
+          <li>ESP32 board</li>
+          <li>1000 uF capacitor</li>
+          <li>1000 Ohm resistor (x2)</li>
+          <li><a href="https://www.amazon.com/dp/B00GUO5WUI?ref=ppx_yo2ov_dt_b_fed_asin_title&th=1">5V DC wall power adapter</a></li>
+          <li><a href="https://www.amazon.com/dp/B09S3S6RYC?ref=ppx_yo2ov_dt_b_fed_asin_title">Female barrel jack adapter</a></li>
+        </ul>
+
+        <img src="../img/trainTrackerBack.jpg" alt="Back of the pixel display">
+        <p>
+          Each pixel has four pins: VCC, GND, DIN, and DOUT. The DOUT of one pixel is connected to 
+          the DIN of another pixel, so the microcontroller only needs to send bits to the first pixel 
+          in the display to control all of them. The color and brightness of a pixel is determined by 
+          the 24 bits that are sent to it. 
+        </p>
+        <img src="../img/ws2812bRGBData.png">
+        <p>
+          How the pixel determines if a bit is a 0 or 1 is by the number of nanoseconds DIN 
+          is high then low.
+        </p>
+        <img src="../img/ws2812bTimings.png" style="width: 40%">
+        <ul style="list-style-type: none; width: 500px;">
+          <li>T0H &emsp; High voltage time for 0 code &emsp; 400ns &plusmn; 150ns</li>
+          <li>T0L &emsp; Low voltage time for 0 code &emsp; 850ns &plusmn; 150ns</li>
+          <li>T1H &emsp; High voltage time for 1 code &emsp; 800ns &plusmn; 150ns</li>
+          <li>T1L &emsp; Low voltage time for 1 code &emsp; 450ns &plusmn; 150ns</li>
+          <li>Treset &emsp; Low voltage time for reset code &emsp; >50us</li>
+        </ul>
+        <p>
+          Initally, I tried to use Expressif's ESP-IDF GPIO driver to controll the pin outputs, but when 
+          measuring how fast the ESP32 pins could switch from high to low and low to high, it was 
+          much too slow for the pixels. I had to directly change the bits of the microcontroller's registers, who
+          addresses can be found in the  
+          <a href="https://www.espressif.com/sites/default/files/documentation/esp32_technical_reference_manual_en.pdf">technical reference manual</a>.
+          I then added nops to delay clock cycles for better timing.
+        </p>
+        <img src="../img/trainTrackerCode_0.png" style="width: 40%;">
+        <p>
+          I used the ESP32 for this project for its built-in WiFi support, allowing me to request 
+          train data from Chicago Transit Authority's (CTA) 
+          <a href="https://www.transitchicago.com/developers/ttdocs/#locations">API</a>. 
+          From that data I knew which station each active train on the blue line was at or heading towards. 
+        </p>
+        <p>
+          To light up the pixels I created an array that could store 198 16-bit numbers, 3 for each 
+          of the 66 pixels that controlled how much green, red, and blue a pixel will 
+          emit and that can be set from 0 to 255. That array is then turned into a binary signal that 
+          is output from a valid pin.
+        </p>
+        <img src="../img/trainTrackerCode_1.png" style="width: 50%;">
+        <img src="../img/trainTrackerOscilloscope.jpg">
+        <p>
+          As I was coding I kept in mind that I might want to extend this project to include other lines of Chicago's 
+          metro system. So if I wanted to add other tracks it could be done fairly easily and none of the existing methods would 
+          have to be modified. 
+        </p>
+        <p>
+          Below on the left is a picture of my pixel display, and on the right is a screenshot of CTA's live
+          <a href="https://www.transitchicago.com/traintrackermap/">
+           train tracker map
+          </a> 
+          taken at the same time.
+        </p>
+        <img src="../img/trainTackerMap.png" style="width: 80%;">
+    </div>
+  </body>
+</html>

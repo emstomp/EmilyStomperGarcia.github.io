@@ -130,3 +130,48 @@ a:hover {
 #contact-body a {
     text-decoration: underline;
 }
+
+/* project pages */
+.project-page-body {
+    padding-bottom: 300px;
+}
+
+.project-page-body img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 30px;
+    width: 60%;
+}
+
+.project-page-body p {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+    font-size: large;
+    line-height: 150%;
+}
+
+.project-page-body ul {
+    width: 30%;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 150%;
+    padding: 10px;
+}
+
+.project-page-body h1 {
+    text-align: center;
+}
+
+.project-page-body h2 {
+    text-align: center;
+    padding: 20px;
+}
+
+.project-page-body a {
+    text-decoration: underline;
+}
+
+
