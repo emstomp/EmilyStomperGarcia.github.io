@@ -25,5 +25,49 @@
       </nav>
     </div>
 
+    <div class="project-page-body">
+      <h1 class="project-page-title">Keyboard</h1>
+        <img src="../img/keyboard_img1.jpg">
+       
+        <p>
+          This is a handwired 60% keyboard I built and programmed using
+          a Rasberry Pi Pico.
+        </p>
+
+        <h2>Supplies</h2>
+        <ul>
+          <li><a href="https://www.amazon.com/Raspberry-Pi-Pico/dp/B09KVB8LVR?crid=7CNCGAHY1OSV&dib=eyJ2IjoiMSJ9.1XbhVRRv87laD4SBggVo61YzA2Huw1PIJEljBOu1dlVyxVI41cyKO7SMQmuthokVLcZAvOhctVTXanflaCI8e1Gzmb_U-IKkvxjngfIaRvQ-sGSxJXFEInAXNc31WFKbwdHexIpR_5GJ2RuNMGGX-LCJrxRR60WpsRV2oLAGhyDBVSgvj74ghndzVggzJhWh3cWe1fHAADyWhHAGqHrpwfIiZkj5Y14lR2ElZ53_-a0.DOHbsMd4b-Rgd5eHLDSGwDCkXRrGAFS9kn4GnnN04E4&dib_tag=se&keywords=raspberry+pi+pico&qid=1737332134&sbo=RZvfv%2F%2FHxDF%2BO5021pAnSA%3D%3D&sprefix=raspberry+pi+pico%2Caps%2C91&sr=8-1">Rasberry Pi Pico</a></li>
+          <li><a href="https://www.amazon.com/100-Pieces-1N4148-Switching-High-Speed/dp/B079KJ91JZ?crid=1NKVNBJ96UV5Y&dib=eyJ2IjoiMSJ9.TKWXsmWuozVfypx2p2VokteSyEO1WbkySCxMsty8EOXg9kgmgw81jC3aYIDwfXFT8HrUjsYxUHi8BSY8TgrIKglW22FJyAW18Od-8ILb6EYg_5lM4S5H2Qbl_9A0S_xAomG5j2Du757ZknhYrzKX6vy3YxQExnSCLhHjhxR9CtPLWrRxlBpcwbnuPQ8k4DZa7VUCcOYICisaRro-yuRZXEWm89kworiHiPo0mSfj7ZY.bNshCylysSLq0Lky50OopCCXe-axRWOtDuPMBO2NIT8&dib_tag=se&keywords=fast%2Bswitching%2Bdiodes&qid=1737332198&sprefix=fast%2Bswitching%2Bdiodes%2Caps%2C76&sr=8-3&th=1">1N4148 Diodes (x61)</li>
+          <li><a href="https://www.amazon.com/gp/product/B07K8HP6KC?ie=UTF8&th=1"></a>Stabilizers</li>
+          <li><a href="https://www.amazon.com/gp/product/B06XKY583Z?ie=UTF8&th=1">60% Plate</a></li>
+          <li><a href="https://www.amazon.com/gp/product/B0BHWHZR13?ie=UTF8&th=1">Keycaps</a></li>
+        </ul>
+
+        <img src="../img/keyboard_img2.jpg">
+        <p>
+          A straighforward way to register inputs from buttons would be to wire them on 
+          their own directly to the controller. However, keyboards have many keys, and a 
+          controller would need to have an input pin for each key if each key were to be 
+          connected seperately. Keyboard matrices help with this. The circuit is organized 
+          into rows and columns so that each key can be identified by thier row and column 
+          number. For my 60%, this means I only need to connect 19 gpio pins instead of 61.
+          Diodes are also needed in this circuit to prevent ghosting, which occurs when 
+          a keyboard cannot register some keys when multiple of them are being pressed 
+          at the same time. 
+        </p>
+        <img src="../img/keyboard_img3.png">
+
+        <p>
+          Key presses are read by the microcontroller with matrix scanning. In the code, 
+          each column is one at a time set to high. At the same time the microcontroller 
+          reads all of the rows. If for example column 3 is set to high and row 1 is also 
+          high at the same time, then the key at row 1, column 3 is being pressed.
+        </p>
+        <p>
+          With CircuitPython I used the Adafruit HID library to simulate USB HID devices.
+        </p>
+        <img src="../img/keyboard_code.png">
+
+    </div>
   </body>
 </html>
